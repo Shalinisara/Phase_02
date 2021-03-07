@@ -1,0 +1,85 @@
+package MyFirstMaven.MyFirst;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+	String qry;
+	Connection dbcon;
+	Statement theStatement;
+	
+	App(){
+		try {	
+	    	String urlToConnect = "jdbc:mysql://localhost:3306/shalini";
+	        	String dbUserName = "root";
+	        	String dbPwd = "";
+	        	String mysqlDriver = "com.mysql.cj.jdbc.Driver";
+	    	//Load the Driver
+	    	
+				
+					Class.forName(mysqlDriver);
+				
+			
+	    	
+	    	//Try to establish db cnctn
+	    
+				Connection dbcon;
+			
+					dbcon = DriverManager.getConnection(urlToConnect,dbUserName,dbPwd);
+				 
+				
+			//Get reference to the statement
+				
+				theStatement = dbcon.createStatement();
+				
+			 
+	    	System.out.println("connection successful");
+	    	}
+	    	catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	
+    public static void main( String[] args )
+    {
+    	App a = new App();
+    	a.getAllRecords();
+    	
+    }
+    
+    void getAllRecords()
+    {
+    	qry = "select * from courses;";
+    	
+    	try {
+
+			
+//			Execute the query
+			ResultSet theResultSet = theStatement.executeQuery(qry);
+			
+//			Traverse through the results
+			while(theResultSet.next()) {
+				System.out.print("Name : " + theResultSet.getString("CourseName"));
+				System.out.print(", Institute : " + theResultSet.getString("Institute"));
+				System.out.println(", Marks : " + theResultSet.getInt("Marks"));
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("Can't get a reference to Statement : " + e.getMessage());
+		}
+    }
+}

@@ -1,0 +1,33 @@
+package MyFirstMaven.MyFirst;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        //Load the Driver
+    	try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	//Try to establish db cnctn
+    	try {
+			Connection dbcon = DriverManager.getConnection("jdbc:mysql://localhost:3306/shalini","root","");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	System.out.println("connection successful");
+    	
+    }
+}
