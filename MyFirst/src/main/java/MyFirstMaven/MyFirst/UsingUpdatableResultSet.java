@@ -54,8 +54,8 @@ void fetchAndUpdate() {
 	
 //	Get a reference to the PreparedStatement
 	try {
-		PreparedStatement pstmt = dbCon.prepareStatement(qry, 0, 0)
-		//PreparedStatement pstmt = dbCon.prepareStatement(qry, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+		//PreparedStatement pstmt = dbCon.prepareStatement(qry, 0, 0)
+		PreparedStatement pstmt = dbCon.prepareStatement(qry, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 		
 //		Execute the query
 		ResultSet theResultSet = pstmt.executeQuery();

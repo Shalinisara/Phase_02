@@ -60,13 +60,14 @@ public class App
     	//new App().getAllRecords();
     	//new App().getCourseDetailsById(2);
     	//new App().addNewCourse();
-    	System.out.println("Please enter Cname, Institute and Marks");
-    	Scanner theScanner = new Scanner(System.in);
-    	String CourseName = theScanner.nextLine();
-    	String Institute = theScanner.nextLine();
-       	int Marks = theScanner.nextInt();
+    	new App().delCoursebyId(1);
+    	//System.out.println("Please enter Cname, Institute and Marks");
+    	//Scanner theScanner = new Scanner(System.in);
+    	//String CourseName = theScanner.nextLine();
+    	//String Institute = theScanner.nextLine();
+       	//int Marks = theScanner.nextInt();
        	
-       	new App().addNewCourseFromRuntime(CourseName, Institute, Marks);
+       	//new App().addNewCourseFromRuntime(CourseName, Institute, Marks);
     }
     
     void getAllRecords()
@@ -134,6 +135,23 @@ public class App
 		}
     }
     
+ // Get Course details for a particular id
+    void delCoursebyId(int id) {
+//    	Write the query to fetch details from the table:learners
+    	qry = "delete from Courses where CourseId = " + id;
+    	
+
+    	try {
+//        	Execute the query
+			if (theStatement.executeUpdate(qry)> 0)
+			{
+				System.out.println("Deleted id : " + id);
+			}
+					
+		} catch (SQLException e) {
+			System.out.println("Can't execute the query : " + e.getMessage());
+		}
+    }
 //  Add a new Course to the table - learner details taken from runtime
   void addNewCourseFromRuntime(String CourseName, String Institute, int Marks) {
 //  	Write the query to insert a new record
