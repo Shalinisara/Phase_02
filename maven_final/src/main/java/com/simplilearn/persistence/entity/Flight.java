@@ -1,4 +1,4 @@
-package com.simplilearn;
+package com.simplilearn.persistence.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,25 +8,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="flights")
-public class Flights {
+@Table(name="flight")
+public class Flight {
 	
-	public Flights () {}
 	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //For Auto-Increment columns
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	int id;
+	private int id;
 	
 	@Column(name="source")
-	String source;
+	private String source;
 	
 	@Column(name="destination")
-	String destination;
+	private String destination;
 	
 	@Column(name="airline")
-	String airline;
+	private String airline;
 
-	public Flights(String source, String destination, String airline) {
+	public Flight(String source, String destination, String airline) {
 		this.source = source;
 		this.destination = destination;
 		this.airline = airline;
