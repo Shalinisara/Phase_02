@@ -36,17 +36,14 @@ public class GetFlight extends HttpServlet {
 		String src = request.getParameter("source");
 		String dest = request.getParameter("destination");
 		PrintWriter out = response.getWriter();
-		//out.println(src);
-		//out.println(dest);
 		
-
 		 List<Flights> theflight =  new Fetchflights().getflightbyplace(src, dest);
 		 
 		for(Flights tempflights : theflight) 
 		{
+			//test to see if values are returned ---- it did
 		 out.println(tempflights.airline);
-		 PrintWriter printWriter = response.getWriter();
-	        printWriter.println(tempflights.airline);
+			
 		  }
 		HttpSession session = request.getSession();
 	    request.setAttribute("tempflights",theflight);
