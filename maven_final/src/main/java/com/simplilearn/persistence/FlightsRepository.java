@@ -20,7 +20,7 @@ public class FlightsRepository {
 		   Session session=customSessionFactory.getSessionFactory().openSession();
 			try
 			{
-				String query="from Flights l where l.source=:source AND l.destination =:destination";
+				String query="from Flight l where l.source=:source AND l.destination =:destination";
 				return session
 						.createQuery(query)
 						.setParameter("source",source)

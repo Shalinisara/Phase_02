@@ -20,6 +20,7 @@ public class UserApiController extends jakarta.servlet.http.HttpServlet{
 	public static final String ERROR_VIEW="./error/error.jsp";
 	public static final String LOGIN_VIEW="./index.jsp";
 	public static final String DASHBOARD_VIEW="./dashboard/dashboard.jsp";
+	public static final String SEARCH_VIEW="./search/searchFlights.jsp";
 
 	private AuthenticationApiHandler authenticationApiHandler;
 	private UpdateUserApiHandler updateUserApiHandler;
@@ -48,9 +49,15 @@ public class UserApiController extends jakarta.servlet.http.HttpServlet{
 				case UPDATE:
 					updateUserApiHandler.updateUser(request,response);
 					break;
+				case LOGOUT:
+					request.getSession().invalidate();
+					request
+						.getRequestDispatcher(LOGIN_VIEW)
+						.forward(request,response);
+					break;
 				default:
 					request
-							.getRequestDispatcher(ERROR_VIEW)
+							.getRequestDispatcher(SEARCH_VIEW)
 							.forward(request,response);
 			}
 		}catch(Exception e){

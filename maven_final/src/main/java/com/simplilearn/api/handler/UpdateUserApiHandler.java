@@ -12,8 +12,8 @@ public class UpdateUserApiHandler {
 
     public void updateUser(HttpServletRequest request, HttpServletResponse response)throws Exception{
         try {
-            String userId = request.getParameter("userid");
-            String password = request.getParameter("userpwd");
+            String userId = request.getParameter("userId");
+            String password = request.getParameter("password");
             UserRepository userRepository = new UserRepository();
             UserDetail userDetail=new UserDetail(userId,password);
             userRepository.updateUser(userDetail);

@@ -14,12 +14,13 @@ public class UserRepository {
 
 	public UserDetail getUserByUserId(String userId){
 		Session session=this.customSessionFactory.getSessionFactory().openSession();
+		System.out.println(String.format("Looking for userId=%s", userId));
 		try{
-			String query="FROM UserDetail where userId=:userId";
+			String query="FROM UserDetail where userid=:userId";
 			return (UserDetail) session
 					.createQuery(query)
 					.setParameter("userId",userId)
-					.uniqueResult();
+					.getSingleResult();
 		}
 		finally {
 			session.close();

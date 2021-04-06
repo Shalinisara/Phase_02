@@ -18,7 +18,7 @@ public class FlightApiController extends jakarta.servlet.http.HttpServlet {
 
 
 	public static final String REQ_ATTR_FLIGHTS_DATA_BY_SOURCE_DESTINATION="REQ_ATTR_FLIGHTS_DATA_BY_SOURCE_DESTINATION";
-	public static final String VIEW_FLIGHTS="flightshow.jsp";
+	public static final String VIEW_FLIGHTS="../dashboard/dashboard.jsp";
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -36,11 +36,14 @@ public class FlightApiController extends jakarta.servlet.http.HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String source = request.getParameter("source");
 		String destination = request.getParameter("destination");
+		System.out.println(String.format("source=%s, destination=%s", source,destination));
 		List<Flight> flights =  new FlightsRepository().searchFlightsBySourceAndDestination(source, destination);
 		flights.stream().forEach(System.out::println);
+		request.setAttribute("source", source);
+		request.setAttribute("destination", destination);
 	    request.setAttribute(REQ_ATTR_FLIGHTS_DATA_BY_SOURCE_DESTINATION,flights);
 		request
 				.getRequestDispatcher(VIEW_FLIGHTS)

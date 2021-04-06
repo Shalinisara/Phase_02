@@ -8,9 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="flight")
+@Table(name="flight",schema = "booking")
 public class Flight {
 	
+	
+	
+	public Flight() {
+		super();
+	}
+
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id

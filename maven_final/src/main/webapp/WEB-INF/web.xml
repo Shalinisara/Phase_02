@@ -31,7 +31,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>FlightServlet</servlet-name>
-		<url-pattern>/flight</url-pattern>
+		<url-pattern>/flight/search</url-pattern>
 	</servlet-mapping>
 
 </web-app>

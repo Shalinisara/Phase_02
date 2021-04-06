@@ -8,8 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user_detail")
+@Table(name="user_detail",schema = "booking")
 public class UserDetail {
+	
+	
+
+	public UserDetail() {
+		super();
+	}
 
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
