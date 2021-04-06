@@ -3,20 +3,18 @@ package com.simplilearn.api;
 import com.simplilearn.persistence.FlightsRepository;
 import com.simplilearn.persistence.entity.Flight;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.List;
 
 /**
  * Servlet implementation class GetFlight
  */
-@WebServlet("/flight")
-public class FlightApiController extends HttpServlet {
+public class FlightApiController extends jakarta.servlet.http.HttpServlet {
 
 
 	public static final String REQ_ATTR_FLIGHTS_DATA_BY_SOURCE_DESTINATION="REQ_ATTR_FLIGHTS_DATA_BY_SOURCE_DESTINATION";
@@ -43,7 +41,6 @@ public class FlightApiController extends HttpServlet {
 		String destination = request.getParameter("destination");
 		List<Flight> flights =  new FlightsRepository().searchFlightsBySourceAndDestination(source, destination);
 		flights.stream().forEach(System.out::println);
-		HttpSession session = request.getSession();
 	    request.setAttribute(REQ_ATTR_FLIGHTS_DATA_BY_SOURCE_DESTINATION,flights);
 		request
 				.getRequestDispatcher(VIEW_FLIGHTS)

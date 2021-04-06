@@ -9,6 +9,21 @@ public class UserRepository {
 	CustomSessionFactory customSessionFactory;
 
 	public UserRepository() {
+		this.customSessionFactory=new CustomSessionFactory();
+	}
+
+	public UserDetail getUserByUserId(String userId){
+		Session session=this.customSessionFactory.getSessionFactory().openSession();
+		try{
+			String query="FROM UserDetail where userId=:userId";
+			return (UserDetail) session
+					.createQuery(query)
+					.setParameter("userId",userId)
+					.uniqueResult();
+		}
+		finally {
+			session.close();
+		}
 	}
 
 	public void updateUser(UserDetail userDetail) {

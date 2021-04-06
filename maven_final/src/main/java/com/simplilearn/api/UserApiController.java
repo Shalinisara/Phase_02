@@ -4,18 +4,23 @@ import com.simplilearn.api.handler.AuthenticationApiHandler;
 import com.simplilearn.api.handler.UpdateUserApiHandler;
 import com.simplilearn.common.UserAction;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
 
-@WebServlet("/user")
-public class UserApiController extends HttpServlet {
+public class UserApiController extends jakarta.servlet.http.HttpServlet{
 
-	public static final String ERROR_VIEW="/error/error.jsp";
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static final String ERROR_VIEW="./error/error.jsp";
+	public static final String LOGIN_VIEW="./index.jsp";
+	public static final String DASHBOARD_VIEW="./dashboard/dashboard.jsp";
+
 	private AuthenticationApiHandler authenticationApiHandler;
 	private UpdateUserApiHandler updateUserApiHandler;
 
@@ -31,15 +36,18 @@ public class UserApiController extends HttpServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
+		System.out.println(String.format("Action=%s", action));
 		try
 		{
 			switch (UserAction.valueOf(action)){
 				case AUTH:
 					authenticationApiHandler.authenticateUser(request,response);
+					break;
 				case UPDATE:
 					updateUserApiHandler.updateUser(request,response);
+					break;
 				default:
 					request
 							.getRequestDispatcher(ERROR_VIEW)

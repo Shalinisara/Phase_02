@@ -4,8 +4,10 @@ import com.simplilearn.api.UserApiController;
 import com.simplilearn.persistence.UserRepository;
 import com.simplilearn.persistence.entity.UserDetail;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+
 
 public class AuthenticationApiHandler {
 
@@ -13,11 +15,18 @@ public class AuthenticationApiHandler {
         try {
             String userId = request.getParameter("userid");
             String password = request.getParameter("userpwd");
-            UserRepository userpwdchange = new UserRepository();
-            System.out.println("user id shalini passed from method is "+userId);
-            UserDetail userDetail=new UserDetail(userId,password);
-            userpwdchange.updateUser(userDetail);
+            UserRepository userRepository = new UserRepository();
+            UserDetail userDetail=userRepository.getUserByUserId(userId);
+            if(!password.equals(userDetail.getUserpwd())){
+                request
+                        .getRequestDispatcher(UserApiController.LOGIN_VIEW)
+                        .forward(request,response);
+            }
+            request
+                    .getRequestDispatcher(UserApiController.DASHBOARD_VIEW)
+                    .forward(request,response);
         } catch (Exception e) {
+        	e.printStackTrace();
             request
                     .getRequestDispatcher(UserApiController.ERROR_VIEW)
                     .forward(request,response);

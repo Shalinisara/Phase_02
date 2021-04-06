@@ -4,8 +4,9 @@ import com.simplilearn.api.UserApiController;
 import com.simplilearn.persistence.UserRepository;
 import com.simplilearn.persistence.entity.UserDetail;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 
 public class UpdateUserApiHandler {
 

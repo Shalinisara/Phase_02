@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="WebApp_ID">
-	<display-name>FlyAway</display-name>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+ 	
+ 	 <display-name>FlyAway</display-name>
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -12,26 +13,24 @@
 	</welcome-file-list>
 
 	<servlet>
-		<description>
-		</description>
-		<display-name>UpdateUser</display-name>
-		<servlet-name>UpdateUser</servlet-name>
+		<display-name>UserServlet</display-name>
+		<servlet-name>UserServlet</servlet-name>
 		<servlet-class>com.simplilearn.api.UserApiController</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
-		<servlet-name>user</servlet-name>
+		<servlet-name>UserServlet</servlet-name>
 		<url-pattern>/user</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-		<description>
-		</description>
-		<display-name>SearchFlight</display-name>
-		<servlet-name>SearchFlight</servlet-name>
+		<display-name>FlightServlet</display-name>
+		<servlet-name>FlightServlet</servlet-name>
 		<servlet-class>com.simplilearn.api.FlightApiController</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
-		<servlet-name>flight</servlet-name>
+		<servlet-name>FlightServlet</servlet-name>
 		<url-pattern>/flight</url-pattern>
 	</servlet-mapping>
 
