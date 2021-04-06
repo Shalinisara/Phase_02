@@ -16,7 +16,7 @@
 				<th>Destination</th> 
 				<th>Flight name</th> 
 			</tr>
-			      <%List<String> theflight = (List<String>)request.getAttribute("tempflights");
+			      <%List<Flights> theflight = (List<Flights>)request.getAttribute("tempflights");
         for(Flights s:theflight){%>
         
        
