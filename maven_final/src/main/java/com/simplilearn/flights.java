@@ -5,9 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class flights {
+@Table(name="flights")
+public class Flights {
+	
+	public Flights () {}
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //For Auto-Increment columns
 	@Id
@@ -22,7 +26,7 @@ public class flights {
 	@Column(name="airline")
 	String airline;
 
-	public flights(String source, String destination, String airline) {
+	public Flights(String source, String destination, String airline) {
 		this.source = source;
 		this.destination = destination;
 		this.airline = airline;

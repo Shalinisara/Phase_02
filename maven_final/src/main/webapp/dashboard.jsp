@@ -19,7 +19,7 @@ else{
 
 out.println("Welcome " + session.getAttribute("userid") + ", you are now logged in<br><br>");
 %>
-<form action="getflights.jsp" method="post">
+<form action="getflight" method="get">
 <label>From: </label>
  <input list="source" name="source" placeholder=" From ">
         <datalist id="source">

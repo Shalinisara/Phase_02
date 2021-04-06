@@ -13,7 +13,8 @@ String src = request.getParameter("source");
 String dest = request.getParameter("destination");
 
 try{
-	List<flights> theflight= new Fetchflights().getflightbyplace(src,dest);
+	Fetchflights theflight= new Fetchflights();
+	theflight.getflightbyplace(src,dest);
 	for(flights tempflights : theflight) { System.out.println(tempflights);
 	 }
 }catch (Exception e) {

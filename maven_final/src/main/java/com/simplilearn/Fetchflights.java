@@ -17,7 +17,7 @@ public class Fetchflights {
 //      Get a Reference to the SessionFactory
    	SessionFactory theFactory = new Configuration()
    								.configure("hibernate-config.xml")
-   								.addAnnotatedClass(flights.class)
+   								.addAnnotatedClass(Flights.class)
    								.buildSessionFactory();
    	
    	
@@ -34,9 +34,9 @@ public class Fetchflights {
 
 
 //		 Using OR with HQL
-		 List<flights> getflightbyplace(String source, String destination){
+		 List<Flights> getflightbyplace(String source, String destination){
 			 
-			 return theSession.createQuery("from flights l where l.source = '" + source + "' AND l.destination = '" + destination + "'").getResultList();
+			 return theSession.createQuery("from Flights l where l.source = '" + source + "' AND l.destination = '" + destination + "'").getResultList();
 			 
 }
 }

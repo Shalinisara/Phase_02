@@ -8,9 +8,20 @@
 		<servlet-name>Changepwd</servlet-name>
 		<servlet-class>com.simplilearn.changepwd</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>GetFlight</display-name>
+		<servlet-name>GetFlight</servlet-name>
+		<servlet-class>com.simplilearn.GetFlight</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Changepwd</servlet-name>
 		<url-pattern>/Changepwd</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetFlight</servlet-name>
+		<url-pattern>/getflight</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
