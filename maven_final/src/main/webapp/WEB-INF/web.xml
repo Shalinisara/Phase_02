@@ -1,28 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="WebApp_ID">
-	<display-name>maven_final</display-name>
-	<servlet>
-		<description>
-		</description>
-		<display-name>Changepwd</display-name>
-		<servlet-name>Changepwd</servlet-name>
-		<servlet-class>com.simplilearn.changepwd</servlet-class>
-	</servlet>
-	<servlet>
-		<description>
-		</description>
-		<display-name>GetFlight</display-name>
-		<servlet-name>GetFlight</servlet-name>
-		<servlet-class>com.simplilearn.GetFlight</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Changepwd</servlet-name>
-		<url-pattern>/Changepwd</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>GetFlight</servlet-name>
-		<url-pattern>/getflight</url-pattern>
-	</servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+ 	
+ 	 <display-name>FlyAway</display-name>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -31,4 +11,27 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+
+	<servlet>
+		<display-name>UserServlet</display-name>
+		<servlet-name>UserServlet</servlet-name>
+		<servlet-class>com.simplilearn.api.UserApiController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UserServlet</servlet-name>
+		<url-pattern>/user</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<display-name>FlightServlet</display-name>
+		<servlet-name>FlightServlet</servlet-name>
+		<servlet-class>com.simplilearn.api.FlightApiController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>FlightServlet</servlet-name>
+		<url-pattern>/flight/search</url-pattern>
+	</servlet-mapping>
+
 </web-app>
