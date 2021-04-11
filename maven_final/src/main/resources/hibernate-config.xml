@@ -9,8 +9,8 @@
 		<!-- Put in your JDBC Database configuration settings here -->
 		<property name="connection.driver_class">org.postgresql.Driver</property>
 		<property name="connection.url">jdbc:postgresql://localhost:5432/flyaway</property>
-		<property name="connection.username">flyaway</property>
-		<property name="connection.password">P@$$W0rd#1234</property>
+		<property name="connection.username">admin</property>
+		<property name="connection.password"></property>
 		
 		<!-- JDBC connection pool settings -->
 		<property name="connection.pool_size">1</property>

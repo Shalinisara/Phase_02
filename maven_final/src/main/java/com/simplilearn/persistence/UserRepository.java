@@ -32,9 +32,11 @@ public class UserRepository {
 		Session session=this.customSessionFactory.getSessionFactory().openSession();
 		try{
 			session.save(userDetail);
+			
 		}
 		finally {
 			session.close();
+			
 		}
 		System.out.println("record successfully committed");
 	}

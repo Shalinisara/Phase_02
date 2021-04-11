@@ -39,7 +39,7 @@ public class UserApiController extends jakarta.servlet.http.HttpServlet{
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		System.out.println(String.format("Action=%s", action));
+		System.out.println(String.format("Action=%s ", action));
 		try
 		{
 			switch (UserAction.valueOf(action)){

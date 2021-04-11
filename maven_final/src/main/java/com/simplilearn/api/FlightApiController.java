@@ -40,7 +40,8 @@ public class FlightApiController extends jakarta.servlet.http.HttpServlet {
 		String source = request.getParameter("source");
 		String destination = request.getParameter("destination");
 		System.out.println(String.format("source=%s, destination=%s", source,destination));
-		List<Flight> flights =  new FlightsRepository().searchFlightsBySourceAndDestination(source, destination);
+		List<Flight> flights =  new FlightsRepository()
+									.searchFlightsBySourceAndDestination(source, destination);
 		flights.stream().forEach(System.out::println);
 		request.setAttribute("source", source);
 		request.setAttribute("destination", destination);
