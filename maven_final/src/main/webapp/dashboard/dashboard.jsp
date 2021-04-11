@@ -9,8 +9,23 @@
 <head>
 <meta charset="UTF-8">
 <title>User Dashboard</title>
+<style>
+body{
+background: #8e9eab;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.banner{
+background: #00d2ff;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+</style>
 </head>
-<body background="https://1.bp.blogspot.com/-sTxAHAxirGM/WVbAe2098nI/AAAAAAABENs/_I5sYMYgLOUzaIE7FfF4qdGX-hoAkq9SgCLcBGAs/s1600/Blog_20170624_113552.jpg">
+<body>
+
+<div class="banner">
 <%
 /* Check whether user is not logged in */
 if(session.getAttribute("isUsedLoggedin") == null){
@@ -20,8 +35,10 @@ if(session.getAttribute("isUsedLoggedin") == null){
 else{
 
 
-out.println("Welcome " + session.getAttribute("userId") + ", you are now logged in<br><br>");
+out.println("Welcome " + session.getAttribute("userId") + "!, you are now logged in<br><br>");
 %>
+</div>
+<br/>
 <form action="/maven_final/flight/search" method="POST">
 <label>From: </label>
  <input list="source" name="source" placeholder=" From ">
@@ -74,22 +91,25 @@ out.println("Welcome " + session.getAttribute("userId") + ", you are now logged 
 	<%if(request.getAttribute("REQ_ATTR_FLIGHTS_DATA_BY_SOURCE_DESTINATION")!=null){ %>
 		<%
 			List<Flight> searchResult=(List<Flight>)request.getAttribute("REQ_ATTR_FLIGHTS_DATA_BY_SOURCE_DESTINATION");
-			
+			int index=0;
 			for(Flight flight:searchResult){
 				
 				%><tr> 
-				<form action="payforflight.jsp" method="get">
-				<td><%out.println(flight.getSource());
-				session.setAttribute("source", flight.getSource());%></td>
-				<td><%out.println(flight.getDestination());
-				      session.setAttribute("destination",flight.getDestination());%></td>
-				<td><%out.println(flight.getAirline());
-				     session.setAttribute("airline",flight.getAirline());%></td>
+				<div>
+				<form action="payforflight.jsp" method="post" id=<%=index%>>
+				<input type="hidden" name="selectedSource" value=<%=flight.getSource()%>/>
+				<input type="hidden" name="selectedDestination" value=<%=flight.getDestination()%>/>
+				<input type="hidden" name="selectedAirline" value=<%=flight.getAirline()%>/>
+				
+				<td><%out.println(flight.getSource());%></td>
+				<td><%out.println(flight.getDestination());%></td>
+				<td><%out.println(flight.getAirline());%></td>
 				<td><input type="submit" value="BOOK FLIGHT"></td>
 				
 				</form>
+				</div>
 				<tr><br><%
-
+				index++;
 			}
 		%>
 	<%}else{ %>
